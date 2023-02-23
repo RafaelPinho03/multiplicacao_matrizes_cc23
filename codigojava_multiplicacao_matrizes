@@ -1,0 +1,80 @@
+package com.mycompany.elementos_de_calculo_cc2023;
+
+import java.util.Scanner;
+
+public class Elementos_de_calculo_cc2023 {
+
+    public static void main(String[] args) {
+         Scanner scanner = new Scanner(System.in);
+        int linha1, linha2, coluna1, coluna2;
+        int[][] matrizA;
+        int[][] matrizB;
+        int[][] matrizC;
+
+        System.out.println("Linha matriz 1:");
+        linha1 = scanner.nextInt();
+        System.out.println("Coluna 1: ");
+        coluna1 = scanner.nextInt();
+
+        System.out.println("Linha matriz 2:");
+        linha2 = scanner.nextInt();
+        System.out.println("Coluna 2: ");
+        coluna2 = scanner.nextInt();
+
+        matrizA = new int[linha1][coluna1];
+        matrizB = new int[linha2][coluna2];
+        matrizC = new int[linha1][coluna2];
+
+        for (int i = 0; i < linha1; i++) {
+            for (int j = 0; j < coluna1; j++) {
+                System.out.print(i + "," + j + " " + "MatrizA: ");
+                matrizA[i][j] = scanner.nextInt();
+            }
+        }
+
+        System.out.println("");
+        for (int i = 0; i < linha2; i++) {
+            for (int j = 0; j < coluna2; j++) {
+                System.out.print(i + "," + j + " " + "MatrizB ");
+                matrizB[i][j] = scanner.nextInt();
+            }
+        }
+
+        System.out.println("");
+        for (int i = 0; i < linha1; i++) {
+            for (int j = 0; j < coluna1; j++) {
+                System.out.print(matrizA[i][j] + "|");
+            }
+            System.out.println("");
+        }
+
+        System.out.println("");
+        for (int i = 0; i < linha2; i++) {
+            for (int j = 0; j < coluna2; j++) {
+                System.out.print(matrizB[i][j] + "|");
+            }
+            System.out.println("");
+        }
+
+        if (coluna1 == linha2) {
+            for (int i = 0; i < linha1; i++) {
+                for (int j = 0; j < coluna2; j++) {
+                    for (int k = 0; k < linha2; k++) {
+                        matrizC[i][j] += matrizA[i][k] * matrizB[k][j];
+                    }
+                }
+            }
+            System.out.println("");
+            System.out.println("Mostrando os elementos da Matriz C:");
+            for (int i = 0; i < linha1; i++) {
+                for (int j = 0; j < coluna2; j++) {
+                    System.out.print(matrizC[i][j] + "|");
+                }
+                System.out.println("");
+            }
+        } else {
+            System.out.println("Não foi possível multiplicar essas 2 matrizes!");
+        }
+    }
+
+}
